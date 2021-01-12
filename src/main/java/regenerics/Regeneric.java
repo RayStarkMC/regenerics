@@ -1,5 +1,7 @@
 package regenerics;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * 再帰的ジェネリクス型。
  *
@@ -21,9 +23,11 @@ public interface Regeneric<I extends Regeneric<I>> {
      * <p>このメソッドをオーバーライドすべきではありません。
      * 実装クラスではクラス自体をfinalで修飾するか、このメソッドをfinalに修飾すべきです。
      *
+     * @throws ClassCastException Iが自身のサブタイプで無い場合
      * @return このインスタンス
      */
     @SuppressWarnings("unchecked")
+    @NotNull
     default I cast() {
         return (I)this;
     }
