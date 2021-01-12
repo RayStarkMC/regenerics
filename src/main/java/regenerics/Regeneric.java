@@ -11,7 +11,7 @@ package regenerics;
  *
  * @param <I>このインターフェースの実装型
  */
-public interface Regenerics<I extends Regenerics<I>> {
+public interface Regeneric<I extends Regeneric<I>> {
 
     /**
      * このインスタンスを実装型にキャストします。
