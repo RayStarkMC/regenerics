@@ -1,0 +1,46 @@
+plugins {
+    id 'java-library'
+}
+
+group 'raystark'
+version '0.1.1'
+
+ext {
+    defaultEncoding = 'UTF-8'
+    javaVersion = JavaVersion.VERSION_15
+    pathLicense = file "$projectDir/LICENSE"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding defaultEncoding
+}
+
+tasks.withType(Jar) {
+    from pathLicense
+}
+
+javadoc {
+    options.encoding defaultEncoding
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'org.jetbrains:annotations:20.1.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+    setSourceCompatibility javaVersion
+    setTargetCompatibility javaVersion
+}
