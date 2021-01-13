@@ -6,8 +6,8 @@
 ```java
 public interface Regeneric<I extends Regeneric<I>> {}
 ```
-一般的には再帰的ジェネリクスを用いた定義では事前契約として型引数として自身のサブタイプを指定する事とし、
-自身の実装型に依存した定義を行います。同様の手法がJava標準APIのEnumやComparableで実際に採用されています。
+一般的に再帰的ジェネリクスを用いた定義では事前契約としてクライアントは型引数として自身のサブタイプを指定する事とします。
+再帰的ジェネリクスでは自身の実装型に依存した定義を行う事が出来ます。同様の手法がJava標準APIのEnumやComparableで実際に採用されています。
 
 ## 安全性
 事前契約に基づく再帰的ジェネリクスは型安全ではありません。次のように型変数として自身のサブタイプ以外を指定することができます。
@@ -15,5 +15,5 @@ public interface Regeneric<I extends Regeneric<I>> {}
 public interface A extends Regeneric<A> {}
 public interface B extends Regeneric<A> {}
 ```
-ライブラリではこのような事前契約に反する継承関係を最大限早いタイミング(理想的には再帰的ジェネリクス型のインスタンスの生成時)に検知し、
-ClassCastExceptionをスローします。
+ライブラリではこのような事前契約に反する継承関係を出来る限り早いタイミング(理想的には再帰的ジェネリクス型のインスタンスの生成時)に検知し、
+ClassCastExceptionをスローするように努めます。
