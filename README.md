@@ -17,3 +17,9 @@ public interface B extends Regeneric<A> {}
 ```
 ライブラリではこのような事前契約に反する継承関係を出来る限り早いタイミング(理想的には再帰的ジェネリクス型のインスタンスの生成時)に検知し、
 ClassCastExceptionをスローするように努めます。
+
+## 参考
+本ライブラリは[highj]に強く影響されており、[highj]による手法を取り入れています。[highjのライセンス]へのリンクを示します。
+
+[highj]: https://github.com/highj/highj
+[highjのライセンス]: https://github.com/highj/highj/blob/master/LICENSE.txt
